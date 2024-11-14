@@ -1,11 +1,17 @@
 package textrpg;
 
 public abstract class Scene {
-	private int foreSceneNumber;
+	private final int prevSceneNum;
+	private SceneManager scene;
 	
 	public Scene(int sceneNumber) {
-		this.foreSceneNumber = sceneNumber;
+		this.prevSceneNum = sceneNumber;
+		scene = SceneManager.getInstance();
 	}
 	
 	abstract public void update();
+	
+	public void movePrevScene () {
+		scene.changeScene(prevSceneNum);
+	}
 }
